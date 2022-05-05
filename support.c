@@ -11,7 +11,7 @@ void swap(void * a, void * b, int typeSize){
     char c1 = (char *) a;
     char c2 = (char *) b;
 
-    for(i = 0; i < typeSize){
+    for(i = 0; i < typeSize; i++){
         char temp = c1[i];
         c1[i] = c2[i];
         c2[i] = temp;
