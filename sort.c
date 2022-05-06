@@ -40,6 +40,7 @@ void bubble(int vSize, void * v, int typeSize, int (* cmp)(const void * a, const
 void quick(int size, void * v, int typeSize, int (* cmp)(const void * a, const void * b)){
     if(size > 1){
         int i = 0, a = 1, b = size - 1;
+        
         void * pivot = access(v, i, typeSize);
         void * vA = access(v, a, typeSize);
         void * vB = access(v, b, typeSize);
