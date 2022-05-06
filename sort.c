@@ -1,10 +1,11 @@
-extern void * access(void * v, int i, int typeSize){
+#include <stdio.h>
+void * access(void * v, int i, int typeSize){
     char * t = (char *) v;
     t += typeSize * i;
     return (void *) t;
 }
 
-extern void swap(void * a, void * b, int typeSize){
+void swap(void * a, void * b, int typeSize){
     int i;
     char * c1 = (char *) a;
     char * c2 = (char *) b;
@@ -16,7 +17,7 @@ extern void swap(void * a, void * b, int typeSize){
     }
 }
 
-void bubble(void * v, int vSize, int typeSize, int (* cmp)(void *, void *)){
+void bubble(int vSize, void * v, int typeSize, int (* cmp)(const void * a, const void * b)){
     int i, end, swapped;
 
     for(end = vSize - 1; end > 0; end--){
@@ -33,5 +34,41 @@ void bubble(void * v, int vSize, int typeSize, int (* cmp)(void *, void *)){
 
         }
         if(!swapped) return;
+    }
+}
+
+void quick(int size, void * v, int typeSize, int (* cmp)(const void * a, const void * b)){
+    if(size > 1){
+        int i = 0, a = 1, b = size - 1;
+        void * pivot = access(v, i, typeSize);
+        void * vA = access(v, a, typeSize);
+        void * vB = access(v, b, typeSize);
+
+        do{
+
+            while(a < size && cmp(vA, pivot) <= 0){
+                a++;
+                vA = access(v, a, typeSize);
+            }
+
+            while(cmp(vB, pivot) == 1){
+                b--;
+                vB = access(v, b, typeSize);
+            } 
+            
+            if(a < b){
+                swap(vA, vB, typeSize);
+                a++;
+                b--;
+                vA = access(v, a, typeSize);
+                vB = access(v, b, typeSize);
+            }
+
+        }while(a <= b);
+
+        swap(pivot, vB, typeSize);
+
+        quick(b, v, typeSize, cmp);
+        quick(size - a, vA, typeSize, cmp);
     }
 }
