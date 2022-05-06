@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "sort.h"
+#define TAM 10
 
 int compara(void * a, void * b){
     int c1 = *((int *) a);
@@ -11,9 +12,9 @@ int compara(void * a, void * b){
 
 int main(void){
     printf("teste\n");
-    int numeros[5] = {2, 8, 4, 3, 7};
-    bubble(numeros, 5, sizeof(int), compara);
-    for(int i = 0; i < 5; i++){
+    int numeros[TAM] = {2, 8, 4, 3, 7, 1, 6, 23, 12, 20};
+    bubble(numeros, TAM, sizeof(int), compara);
+    for(int i = 0; i < TAM; i++){
         printf("%d ", numeros[i]);
     }
     printf("\n");

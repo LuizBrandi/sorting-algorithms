@@ -1,12 +1,10 @@
-#include <stdio.h>
-#include "sort.h"
-
-/*void * access(void * v, int i, int typeSize){
+extern void * access(void * v, int i, int typeSize){
     char * t = (char *) v;
     t += typeSize * i;
     return (void *) t;
 }
-void swap(void * a, void * b, int typeSize){
+
+extern void swap(void * a, void * b, int typeSize){
     int i;
     char * c1 = (char *) a;
     char * c2 = (char *) b;
@@ -16,7 +14,7 @@ void swap(void * a, void * b, int typeSize){
         c1[i] = c2[i];
         c2[i] = temp;
     }
-}*/
+}
 
 void bubble(void * v, int vSize, int typeSize, int (* cmp)(void *, void *)){
     int i, end, swapped;
