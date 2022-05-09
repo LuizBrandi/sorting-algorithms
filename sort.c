@@ -33,7 +33,7 @@ void bubble(int vSize, void * v, int typeSize, int (* cmp)(const void * a, const
             }
 
         }
-        if(!swapped) return;
+        if(!swapped) break;
     }
 }
 
