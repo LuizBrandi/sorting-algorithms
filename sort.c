@@ -17,10 +17,10 @@ void swap(void * a, void * b, int typeSize){
     }
 }
 
-void bubble(int vSize, void * v, int typeSize, int (* cmp)(const void * a, const void * b)){
+void bubble(int size, void * v, int typeSize, int (* cmp)(const void * a, const void * b)){
     int i, end, swapped;
 
-    for(end = vSize - 1; end > 0; end--){
+    for(end = size - 1; end > 0; end--){
         swapped = 0;
         for(i = 0; i < end; i++){
 
