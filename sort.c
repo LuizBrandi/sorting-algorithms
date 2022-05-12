@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include "sort.h"
+
 void * access(void * v, int i, int typeSize){
     char * t = (char *) v;
     t += typeSize * i;
